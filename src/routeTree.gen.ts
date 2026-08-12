@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AtencionesRouteImport } from './routes/atenciones'
+import { Route as CharttestRouteImport } from './routes/charttest'
 import { Route as ClientesRouteImport } from './routes/clientes'
 import { Route as ConfiguracionRouteImport } from './routes/configuracion'
 import { Route as ConocimientoRouteImport } from './routes/conocimiento'
@@ -34,6 +35,11 @@ const IndexRoute = IndexRouteImport.update({
 const AtencionesRoute = AtencionesRouteImport.update({
   id: '/atenciones',
   path: '/atenciones',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CharttestRoute = CharttestRouteImport.update({
+  id: '/charttest',
+  path: '/charttest',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ClientesRoute = ClientesRouteImport.update({
@@ -110,6 +116,7 @@ const ReportesZendeskRoute = ReportesZendeskRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/atenciones': typeof AtencionesRoute
+  '/charttest': typeof CharttestRoute
   '/clientes': typeof ClientesRoute
   '/configuracion': typeof ConfiguracionRoute
   '/conocimiento': typeof ConocimientoRoute
@@ -128,6 +135,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/atenciones': typeof AtencionesRoute
+  '/charttest': typeof CharttestRoute
   '/clientes': typeof ClientesRoute
   '/configuracion': typeof ConfiguracionRoute
   '/conocimiento': typeof ConocimientoRoute
@@ -146,6 +154,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/atenciones': typeof AtencionesRoute
+  '/charttest': typeof CharttestRoute
   '/clientes': typeof ClientesRoute
   '/configuracion': typeof ConfiguracionRoute
   '/conocimiento': typeof ConocimientoRoute
@@ -166,6 +175,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/atenciones'
+    | '/charttest'
     | '/clientes'
     | '/configuracion'
     | '/conocimiento'
@@ -184,6 +194,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/atenciones'
+    | '/charttest'
     | '/clientes'
     | '/configuracion'
     | '/conocimiento'
@@ -201,6 +212,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/atenciones'
+    | '/charttest'
     | '/clientes'
     | '/configuracion'
     | '/conocimiento'
@@ -220,6 +232,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AtencionesRoute: typeof AtencionesRoute
+  CharttestRoute: typeof CharttestRoute
   ClientesRoute: typeof ClientesRoute
   ConfiguracionRoute: typeof ConfiguracionRoute
   ConocimientoRoute: typeof ConocimientoRoute
@@ -240,6 +253,13 @@ declare module '@tanstack/react-router' {
       path: '/atenciones'
       fullPath: '/atenciones'
       preLoaderRoute: typeof AtencionesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/charttest': {
+      id: '/charttest'
+      path: '/charttest'
+      fullPath: '/charttest'
+      preLoaderRoute: typeof CharttestRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/clientes': {
@@ -376,6 +396,7 @@ const ReportesRouteWithChildren = ReportesRoute._addFileChildren(
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AtencionesRoute: AtencionesRoute,
+  CharttestRoute: CharttestRoute,
   ClientesRoute: ClientesRoute,
   ConfiguracionRoute: ConfiguracionRoute,
   ConocimientoRoute: ConocimientoRoute,
