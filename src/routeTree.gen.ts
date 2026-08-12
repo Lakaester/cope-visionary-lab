@@ -10,33 +10,220 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AtencionesRouteImport } from './routes/atenciones'
+import { Route as ClientesRouteImport } from './routes/clientes'
+import { Route as ConfiguracionRouteImport } from './routes/configuracion'
+import { Route as ConocimientoRouteImport } from './routes/conocimiento'
+import { Route as ReportesRouteImport } from './routes/reportes'
+import { Route as ReportesIndexRouteImport } from './routes/reportes.index'
+import { Route as ReportesAsesoresRouteImport } from './routes/reportes.asesores'
+import { Route as ReportesCategoriasRouteImport } from './routes/reportes.categorias'
+import { Route as ReportesClientesRouteImport } from './routes/reportes.clientes'
+import { Route as ReportesOperacionRouteImport } from './routes/reportes.operacion'
+import { Route as ReportesPaisRouteImport } from './routes/reportes.pais'
+import { Route as ReportesQuejasRouteImport } from './routes/reportes.quejas'
+import { Route as ReportesTendenciasRouteImport } from './routes/reportes.tendencias'
+import { Route as ReportesWhatsappRouteImport } from './routes/reportes.whatsapp'
+import { Route as ReportesZendeskRouteImport } from './routes/reportes.zendesk'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AtencionesRoute = AtencionesRouteImport.update({
+  id: '/atenciones',
+  path: '/atenciones',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ClientesRoute = ClientesRouteImport.update({
+  id: '/clientes',
+  path: '/clientes',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ConfiguracionRoute = ConfiguracionRouteImport.update({
+  id: '/configuracion',
+  path: '/configuracion',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ConocimientoRoute = ConocimientoRouteImport.update({
+  id: '/conocimiento',
+  path: '/conocimiento',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReportesRoute = ReportesRouteImport.update({
+  id: '/reportes',
+  path: '/reportes',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReportesIndexRoute = ReportesIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => ReportesRoute,
+} as any)
+const ReportesAsesoresRoute = ReportesAsesoresRouteImport.update({
+  id: '/asesores',
+  path: '/asesores',
+  getParentRoute: () => ReportesRoute,
+} as any)
+const ReportesCategoriasRoute = ReportesCategoriasRouteImport.update({
+  id: '/categorias',
+  path: '/categorias',
+  getParentRoute: () => ReportesRoute,
+} as any)
+const ReportesClientesRoute = ReportesClientesRouteImport.update({
+  id: '/clientes',
+  path: '/clientes',
+  getParentRoute: () => ReportesRoute,
+} as any)
+const ReportesOperacionRoute = ReportesOperacionRouteImport.update({
+  id: '/operacion',
+  path: '/operacion',
+  getParentRoute: () => ReportesRoute,
+} as any)
+const ReportesPaisRoute = ReportesPaisRouteImport.update({
+  id: '/pais',
+  path: '/pais',
+  getParentRoute: () => ReportesRoute,
+} as any)
+const ReportesQuejasRoute = ReportesQuejasRouteImport.update({
+  id: '/quejas',
+  path: '/quejas',
+  getParentRoute: () => ReportesRoute,
+} as any)
+const ReportesTendenciasRoute = ReportesTendenciasRouteImport.update({
+  id: '/tendencias',
+  path: '/tendencias',
+  getParentRoute: () => ReportesRoute,
+} as any)
+const ReportesWhatsappRoute = ReportesWhatsappRouteImport.update({
+  id: '/whatsapp',
+  path: '/whatsapp',
+  getParentRoute: () => ReportesRoute,
+} as any)
+const ReportesZendeskRoute = ReportesZendeskRouteImport.update({
+  id: '/zendesk',
+  path: '/zendesk',
+  getParentRoute: () => ReportesRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/atenciones': typeof AtencionesRoute
+  '/clientes': typeof ClientesRoute
+  '/configuracion': typeof ConfiguracionRoute
+  '/conocimiento': typeof ConocimientoRoute
+  '/reportes': typeof ReportesRouteWithChildren
+  '/reportes/asesores': typeof ReportesAsesoresRoute
+  '/reportes/categorias': typeof ReportesCategoriasRoute
+  '/reportes/clientes': typeof ReportesClientesRoute
+  '/reportes/operacion': typeof ReportesOperacionRoute
+  '/reportes/pais': typeof ReportesPaisRoute
+  '/reportes/quejas': typeof ReportesQuejasRoute
+  '/reportes/tendencias': typeof ReportesTendenciasRoute
+  '/reportes/whatsapp': typeof ReportesWhatsappRoute
+  '/reportes/zendesk': typeof ReportesZendeskRoute
+  '/reportes/': typeof ReportesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/atenciones': typeof AtencionesRoute
+  '/clientes': typeof ClientesRoute
+  '/configuracion': typeof ConfiguracionRoute
+  '/conocimiento': typeof ConocimientoRoute
+  '/reportes/asesores': typeof ReportesAsesoresRoute
+  '/reportes/categorias': typeof ReportesCategoriasRoute
+  '/reportes/clientes': typeof ReportesClientesRoute
+  '/reportes/operacion': typeof ReportesOperacionRoute
+  '/reportes/pais': typeof ReportesPaisRoute
+  '/reportes/quejas': typeof ReportesQuejasRoute
+  '/reportes/tendencias': typeof ReportesTendenciasRoute
+  '/reportes/whatsapp': typeof ReportesWhatsappRoute
+  '/reportes/zendesk': typeof ReportesZendeskRoute
+  '/reportes': typeof ReportesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/atenciones': typeof AtencionesRoute
+  '/clientes': typeof ClientesRoute
+  '/configuracion': typeof ConfiguracionRoute
+  '/conocimiento': typeof ConocimientoRoute
+  '/reportes': typeof ReportesRouteWithChildren
+  '/reportes/asesores': typeof ReportesAsesoresRoute
+  '/reportes/categorias': typeof ReportesCategoriasRoute
+  '/reportes/clientes': typeof ReportesClientesRoute
+  '/reportes/operacion': typeof ReportesOperacionRoute
+  '/reportes/pais': typeof ReportesPaisRoute
+  '/reportes/quejas': typeof ReportesQuejasRoute
+  '/reportes/tendencias': typeof ReportesTendenciasRoute
+  '/reportes/whatsapp': typeof ReportesWhatsappRoute
+  '/reportes/zendesk': typeof ReportesZendeskRoute
+  '/reportes/': typeof ReportesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/atenciones'
+    | '/clientes'
+    | '/configuracion'
+    | '/conocimiento'
+    | '/reportes'
+    | '/reportes/asesores'
+    | '/reportes/categorias'
+    | '/reportes/clientes'
+    | '/reportes/operacion'
+    | '/reportes/pais'
+    | '/reportes/quejas'
+    | '/reportes/tendencias'
+    | '/reportes/whatsapp'
+    | '/reportes/zendesk'
+    | '/reportes/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/atenciones'
+    | '/clientes'
+    | '/configuracion'
+    | '/conocimiento'
+    | '/reportes/asesores'
+    | '/reportes/categorias'
+    | '/reportes/clientes'
+    | '/reportes/operacion'
+    | '/reportes/pais'
+    | '/reportes/quejas'
+    | '/reportes/tendencias'
+    | '/reportes/whatsapp'
+    | '/reportes/zendesk'
+    | '/reportes'
+  id:
+    | '__root__'
+    | '/'
+    | '/atenciones'
+    | '/clientes'
+    | '/configuracion'
+    | '/conocimiento'
+    | '/reportes'
+    | '/reportes/asesores'
+    | '/reportes/categorias'
+    | '/reportes/clientes'
+    | '/reportes/operacion'
+    | '/reportes/pais'
+    | '/reportes/quejas'
+    | '/reportes/tendencias'
+    | '/reportes/whatsapp'
+    | '/reportes/zendesk'
+    | '/reportes/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AtencionesRoute: typeof AtencionesRoute
+  ClientesRoute: typeof ClientesRoute
+  ConfiguracionRoute: typeof ConfiguracionRoute
+  ConocimientoRoute: typeof ConocimientoRoute
+  ReportesRoute: typeof ReportesRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +235,151 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/atenciones': {
+      id: '/atenciones'
+      path: '/atenciones'
+      fullPath: '/atenciones'
+      preLoaderRoute: typeof AtencionesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/clientes': {
+      id: '/clientes'
+      path: '/clientes'
+      fullPath: '/clientes'
+      preLoaderRoute: typeof ClientesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/configuracion': {
+      id: '/configuracion'
+      path: '/configuracion'
+      fullPath: '/configuracion'
+      preLoaderRoute: typeof ConfiguracionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/conocimiento': {
+      id: '/conocimiento'
+      path: '/conocimiento'
+      fullPath: '/conocimiento'
+      preLoaderRoute: typeof ConocimientoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reportes': {
+      id: '/reportes'
+      path: '/reportes'
+      fullPath: '/reportes'
+      preLoaderRoute: typeof ReportesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reportes/': {
+      id: '/reportes/'
+      path: '/'
+      fullPath: '/reportes/'
+      preLoaderRoute: typeof ReportesIndexRouteImport
+      parentRoute: typeof ReportesRoute
+    }
+    '/reportes/asesores': {
+      id: '/reportes/asesores'
+      path: '/asesores'
+      fullPath: '/reportes/asesores'
+      preLoaderRoute: typeof ReportesAsesoresRouteImport
+      parentRoute: typeof ReportesRoute
+    }
+    '/reportes/categorias': {
+      id: '/reportes/categorias'
+      path: '/categorias'
+      fullPath: '/reportes/categorias'
+      preLoaderRoute: typeof ReportesCategoriasRouteImport
+      parentRoute: typeof ReportesRoute
+    }
+    '/reportes/clientes': {
+      id: '/reportes/clientes'
+      path: '/clientes'
+      fullPath: '/reportes/clientes'
+      preLoaderRoute: typeof ReportesClientesRouteImport
+      parentRoute: typeof ReportesRoute
+    }
+    '/reportes/operacion': {
+      id: '/reportes/operacion'
+      path: '/operacion'
+      fullPath: '/reportes/operacion'
+      preLoaderRoute: typeof ReportesOperacionRouteImport
+      parentRoute: typeof ReportesRoute
+    }
+    '/reportes/pais': {
+      id: '/reportes/pais'
+      path: '/pais'
+      fullPath: '/reportes/pais'
+      preLoaderRoute: typeof ReportesPaisRouteImport
+      parentRoute: typeof ReportesRoute
+    }
+    '/reportes/quejas': {
+      id: '/reportes/quejas'
+      path: '/quejas'
+      fullPath: '/reportes/quejas'
+      preLoaderRoute: typeof ReportesQuejasRouteImport
+      parentRoute: typeof ReportesRoute
+    }
+    '/reportes/tendencias': {
+      id: '/reportes/tendencias'
+      path: '/tendencias'
+      fullPath: '/reportes/tendencias'
+      preLoaderRoute: typeof ReportesTendenciasRouteImport
+      parentRoute: typeof ReportesRoute
+    }
+    '/reportes/whatsapp': {
+      id: '/reportes/whatsapp'
+      path: '/whatsapp'
+      fullPath: '/reportes/whatsapp'
+      preLoaderRoute: typeof ReportesWhatsappRouteImport
+      parentRoute: typeof ReportesRoute
+    }
+    '/reportes/zendesk': {
+      id: '/reportes/zendesk'
+      path: '/zendesk'
+      fullPath: '/reportes/zendesk'
+      preLoaderRoute: typeof ReportesZendeskRouteImport
+      parentRoute: typeof ReportesRoute
+    }
   }
 }
 
+interface ReportesRouteChildren {
+  ReportesAsesoresRoute: typeof ReportesAsesoresRoute
+  ReportesCategoriasRoute: typeof ReportesCategoriasRoute
+  ReportesClientesRoute: typeof ReportesClientesRoute
+  ReportesOperacionRoute: typeof ReportesOperacionRoute
+  ReportesPaisRoute: typeof ReportesPaisRoute
+  ReportesQuejasRoute: typeof ReportesQuejasRoute
+  ReportesTendenciasRoute: typeof ReportesTendenciasRoute
+  ReportesWhatsappRoute: typeof ReportesWhatsappRoute
+  ReportesZendeskRoute: typeof ReportesZendeskRoute
+  ReportesIndexRoute: typeof ReportesIndexRoute
+}
+
+const ReportesRouteChildren: ReportesRouteChildren = {
+  ReportesAsesoresRoute: ReportesAsesoresRoute,
+  ReportesCategoriasRoute: ReportesCategoriasRoute,
+  ReportesClientesRoute: ReportesClientesRoute,
+  ReportesOperacionRoute: ReportesOperacionRoute,
+  ReportesPaisRoute: ReportesPaisRoute,
+  ReportesQuejasRoute: ReportesQuejasRoute,
+  ReportesTendenciasRoute: ReportesTendenciasRoute,
+  ReportesWhatsappRoute: ReportesWhatsappRoute,
+  ReportesZendeskRoute: ReportesZendeskRoute,
+  ReportesIndexRoute: ReportesIndexRoute,
+}
+
+const ReportesRouteWithChildren = ReportesRoute._addFileChildren(
+  ReportesRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AtencionesRoute: AtencionesRoute,
+  ClientesRoute: ClientesRoute,
+  ConfiguracionRoute: ConfiguracionRoute,
+  ConocimientoRoute: ConocimientoRoute,
+  ReportesRoute: ReportesRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
