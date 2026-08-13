@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, cloneElement, type ReactNode, type ReactElement } from "react";
+import type { ReactNode } from "react";
 import {
   Area,
   AreaChart,
@@ -11,6 +11,7 @@ import {
   LineChart,
   Pie,
   PieChart,
+  ResponsiveContainer,
   Tooltip,
   XAxis,
   YAxis,
@@ -35,29 +36,6 @@ const tooltipStyle = {
   labelStyle: { fontSize: 11, color: "var(--muted-foreground)" },
 } as const;
 
-function AutoSize({ children }: { children: ReactElement<{ width?: number; height?: number }> }) {
-  const ref = useRef<HTMLDivElement>(null);
-  const [size, setSize] = useState({ width: 0, height: 0 });
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const update = () => setSize({ width: el.clientWidth, height: el.clientHeight });
-    update();
-    const ro = new ResizeObserver(update);
-    ro.observe(el);
-    return () => ro.disconnect();
-  }, []);
-
-  return (
-    <div ref={ref} className="size-full">
-      {size.width > 0 && size.height > 0
-        ? cloneElement(children, { width: size.width, height: size.height })
-        : null}
-    </div>
-  );
-}
-
 export function ChartCard({
   title,
   hint,
@@ -74,10 +52,12 @@ export function ChartCard({
   className?: string | undefined;
 }) {
   return (
-    <section className={cn("rounded-md border border-border bg-surface", className)}>
+    <section className={cn("rounded-lg border border-border bg-surface", className)}>
       <SectionHeader title={title} hint={hint} actions={actions} />
       <div className="px-2 py-3" style={{ height }}>
-        <AutoSize>{children as ReactElement<{ width?: number; height?: number }>}</AutoSize>
+        <ResponsiveContainer width="100%" height="100%">
+          {children as never}
+        </ResponsiveContainer>
       </div>
     </section>
   );
@@ -101,10 +81,10 @@ export function ChannelStack({
       <YAxis {...axisProps} width={44} />
       <Tooltip cursor={{ fill: "var(--surface-2)" }} {...tooltipStyle} />
       <Legend {...legendProps} />
-      <Bar dataKey="whatsapp" name="WhatsApp" stackId="c" fill="var(--ch-whatsapp)" />
-      <Bar dataKey="correo" name="Correo" stackId="c" fill="var(--ch-correo)" />
-      <Bar dataKey="zendesk" name="Zendesk" stackId="c" fill="var(--ch-zendesk)" />
-      <Bar dataKey="telefono" name="Teléfono" stackId="c" fill="var(--ch-telefono)" radius={[2, 2, 0, 0]} />
+      <Bar isAnimationActive={false} dataKey="whatsapp" name="WhatsApp" stackId="c" fill="var(--ch-whatsapp)" />
+      <Bar isAnimationActive={false} dataKey="correo" name="Correo" stackId="c" fill="var(--ch-correo)" />
+      <Bar isAnimationActive={false} dataKey="zendesk" name="Zendesk" stackId="c" fill="var(--ch-zendesk)" />
+      <Bar isAnimationActive={false} dataKey="telefono" name="Teléfono" stackId="c" fill="var(--ch-telefono)" radius={[2, 2, 0, 0]} />
     </BarChart>
   );
 }
@@ -117,7 +97,7 @@ export function SlaTrend({ data }: { data: { periodo: string; cumplido: number; 
       <YAxis {...axisProps} width={44} domain={[60, 100]} />
       <Tooltip {...tooltipStyle} />
       <Legend {...legendProps} />
-      <Line
+      <Line isAnimationActive={false}
         type="monotone"
         dataKey="cumplido"
         name="SLA cumplido (%)"
@@ -125,7 +105,7 @@ export function SlaTrend({ data }: { data: { periodo: string; cumplido: number; 
         strokeWidth={2}
         dot={{ r: 2.5 }}
       />
-      <Line
+      <Line isAnimationActive={false}
         type="monotone"
         dataKey="trm"
         name="TRM (min)"
@@ -154,7 +134,7 @@ export function VolumeArea({
       <XAxis dataKey="periodo" {...axisProps} />
       <YAxis {...axisProps} width={44} />
       <Tooltip {...tooltipStyle} />
-      <Area
+      <Area isAnimationActive={false}
         type="monotone"
         dataKey={dataKey}
         name={name}
@@ -186,7 +166,7 @@ export function HorizontalBars({
       <XAxis type="number" {...axisProps} />
       <YAxis type="category" dataKey={categoryKey} width={110} {...axisProps} />
       <Tooltip cursor={{ fill: "var(--surface-2)" }} {...tooltipStyle} />
-      <Bar dataKey={valueKey} name={name} fill={color} radius={[0, 2, 2, 0]} />
+      <Bar isAnimationActive={false} dataKey={valueKey} name={name} fill={color} radius={[0, 2, 2, 0]} />
     </BarChart>
   );
 }
@@ -206,7 +186,7 @@ export function DistributionPie({
     <PieChart>
       <Tooltip {...tooltipStyle} />
       <Legend {...legendProps} />
-      <Pie
+      <Pie isAnimationActive={false}
         data={data}
         dataKey={valueKey}
         nameKey={nameKey}
@@ -216,7 +196,7 @@ export function DistributionPie({
         stroke="var(--surface)"
       >
         {data.map((_, i) => (
-          <Cell key={i} fill={colors[i % colors.length]} />
+          <Cell key={i} fill={colors[i % colors.length] ?? "var(--info)"} />
         ))}
       </Pie>
     </PieChart>
