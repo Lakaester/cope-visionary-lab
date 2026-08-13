@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, cloneElement, type ReactNode, type ReactElement } from "react";
+import type { ReactNode } from "react";
 import {
   Area,
   AreaChart,
@@ -11,6 +11,7 @@ import {
   LineChart,
   Pie,
   PieChart,
+  ResponsiveContainer,
   Tooltip,
   XAxis,
   YAxis,
@@ -35,29 +36,6 @@ const tooltipStyle = {
   labelStyle: { fontSize: 11, color: "var(--muted-foreground)" },
 } as const;
 
-function AutoSize({ children }: { children: ReactElement<{ width?: number; height?: number }> }) {
-  const ref = useRef<HTMLDivElement>(null);
-  const [size, setSize] = useState({ width: 0, height: 0 });
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const update = () => setSize({ width: el.clientWidth, height: el.clientHeight });
-    update();
-    const ro = new ResizeObserver(update);
-    ro.observe(el);
-    return () => ro.disconnect();
-  }, []);
-
-  return (
-    <div ref={ref} className="size-full">
-      {size.width > 0 && size.height > 0
-        ? cloneElement(children, { width: size.width, height: size.height })
-        : null}
-    </div>
-  );
-}
-
 export function ChartCard({
   title,
   hint,
@@ -74,10 +52,12 @@ export function ChartCard({
   className?: string | undefined;
 }) {
   return (
-    <section className={cn("rounded-md border border-border bg-surface", className)}>
+    <section className={cn("rounded-lg border border-border bg-surface", className)}>
       <SectionHeader title={title} hint={hint} actions={actions} />
       <div className="px-2 py-3" style={{ height }}>
-        <AutoSize>{children as ReactElement<{ width?: number; height?: number }>}</AutoSize>
+        <ResponsiveContainer width="100%" height="100%">
+          {children as never}
+        </ResponsiveContainer>
       </div>
     </section>
   );
