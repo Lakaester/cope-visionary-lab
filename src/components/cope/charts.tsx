@@ -196,7 +196,7 @@ export function DistributionPie({
         stroke="var(--surface)"
       >
         {data.map((_, i) => (
-          <Cell key={i} fill={colors[i % colors.length]} />
+          <Cell key={i} fill={colors[i % colors.length] ?? "var(--info)"} />
         ))}
       </Pie>
     </PieChart>
