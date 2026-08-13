@@ -76,7 +76,7 @@ function Sidebar({ mobileOpen, onClose }: { mobileOpen: boolean; onClose: () => 
                   )}
                 >
                   <item.icon className="size-5" aria-hidden />
-                  <span className="text-[10px] font-medium leading-tight">{item.label}</span>
+                  <span className="w-full break-words px-0.5 text-[9.5px] font-medium leading-[1.15]">{item.label}</span>
                   {item.badge && !active && (
                     <span className="num absolute right-2 top-2 rounded-full bg-danger px-1.5 text-[9px] font-semibold text-danger-foreground">
                       {item.badge}
