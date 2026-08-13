@@ -81,10 +81,10 @@ export function ChannelStack({
       <YAxis {...axisProps} width={44} />
       <Tooltip cursor={{ fill: "var(--surface-2)" }} {...tooltipStyle} />
       <Legend {...legendProps} />
-      <Bar dataKey="whatsapp" name="WhatsApp" stackId="c" fill="var(--ch-whatsapp)" />
-      <Bar dataKey="correo" name="Correo" stackId="c" fill="var(--ch-correo)" />
-      <Bar dataKey="zendesk" name="Zendesk" stackId="c" fill="var(--ch-zendesk)" />
-      <Bar dataKey="telefono" name="Teléfono" stackId="c" fill="var(--ch-telefono)" radius={[2, 2, 0, 0]} />
+      <Bar isAnimationActive={false} dataKey="whatsapp" name="WhatsApp" stackId="c" fill="var(--ch-whatsapp)" />
+      <Bar isAnimationActive={false} dataKey="correo" name="Correo" stackId="c" fill="var(--ch-correo)" />
+      <Bar isAnimationActive={false} dataKey="zendesk" name="Zendesk" stackId="c" fill="var(--ch-zendesk)" />
+      <Bar isAnimationActive={false} dataKey="telefono" name="Teléfono" stackId="c" fill="var(--ch-telefono)" radius={[2, 2, 0, 0]} />
     </BarChart>
   );
 }
@@ -97,7 +97,7 @@ export function SlaTrend({ data }: { data: { periodo: string; cumplido: number; 
       <YAxis {...axisProps} width={44} domain={[60, 100]} />
       <Tooltip {...tooltipStyle} />
       <Legend {...legendProps} />
-      <Line
+      <Line isAnimationActive={false}
         type="monotone"
         dataKey="cumplido"
         name="SLA cumplido (%)"
@@ -105,7 +105,7 @@ export function SlaTrend({ data }: { data: { periodo: string; cumplido: number; 
         strokeWidth={2}
         dot={{ r: 2.5 }}
       />
-      <Line
+      <Line isAnimationActive={false}
         type="monotone"
         dataKey="trm"
         name="TRM (min)"
@@ -134,7 +134,7 @@ export function VolumeArea({
       <XAxis dataKey="periodo" {...axisProps} />
       <YAxis {...axisProps} width={44} />
       <Tooltip {...tooltipStyle} />
-      <Area
+      <Area isAnimationActive={false}
         type="monotone"
         dataKey={dataKey}
         name={name}
@@ -166,7 +166,7 @@ export function HorizontalBars({
       <XAxis type="number" {...axisProps} />
       <YAxis type="category" dataKey={categoryKey} width={110} {...axisProps} />
       <Tooltip cursor={{ fill: "var(--surface-2)" }} {...tooltipStyle} />
-      <Bar dataKey={valueKey} name={name} fill={color} radius={[0, 2, 2, 0]} />
+      <Bar isAnimationActive={false} dataKey={valueKey} name={name} fill={color} radius={[0, 2, 2, 0]} />
     </BarChart>
   );
 }
@@ -186,7 +186,7 @@ export function DistributionPie({
     <PieChart>
       <Tooltip {...tooltipStyle} />
       <Legend {...legendProps} />
-      <Pie
+      <Pie isAnimationActive={false}
         data={data}
         dataKey={valueKey}
         nameKey={nameKey}
