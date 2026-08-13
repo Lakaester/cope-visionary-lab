@@ -167,7 +167,7 @@ function Header({ onOpenMenu }: { onOpenMenu: () => void }) {
             <p className="text-xs text-black-45">
               Hola, <span className="font-semibold text-black-85">M. Quispe</span>
             </p>
-            <span className="inline-block rounded-sm bg-black-85 px-2 py-0.5 text-[9px] font-semibold uppercase tracking-wide text-white">
+            <span className="inline-block rounded-sm bg-black-85 px-2 py-0.5 text-[9px] font-semibold uppercase tracking-wide text-primary-foreground">
               Soporte
             </span>
           </div>
