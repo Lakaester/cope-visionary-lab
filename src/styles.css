@@ -126,7 +126,7 @@
   --destructive-foreground: oklch(1 0 0);
   --border: oklch(0.88 0 0);
   --input: oklch(0.88 0 0);
-  --ring: transparent;
+  --ring: oklch(0.62 0.2 255);
 
   --success: oklch(0.58 0.14 145);
   --success-foreground: oklch(1 0 0);
@@ -160,7 +160,7 @@
   --sidebar-accent: oklch(0.97 0.01 250);
   --sidebar-accent-foreground: oklch(0.35 0 0);
   --sidebar-border: oklch(0.88 0 0);
-  --sidebar-ring: transparent;
+  --sidebar-ring: oklch(0.62 0.2 255);
 }
 
 .dark {

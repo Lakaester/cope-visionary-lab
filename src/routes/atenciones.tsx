@@ -42,6 +42,7 @@ function Atenciones() {
   const [query, setQuery] = useState("");
   const [filtro, setFiltro] = useState<"Todos" | "Míos" | "Sin asignar" | "En riesgo">("Todos");
   const [selectedId, setSelectedId] = useState(tickets[0]!.id);
+  const [pane, setPane] = useState<"Bandeja" | "Conversación" | "Panel">("Conversación");
 
   const lista = useMemo(() => {
     const q = query.trim().toLowerCase();
@@ -57,9 +58,24 @@ function Atenciones() {
   const actual = tickets.find((t) => t.id === selectedId) ?? tickets[0]!;
 
   return (
-    <div className="flex min-h-0 flex-1">
+    <div className="flex min-h-0 flex-1 flex-col xl:flex-row">
+      {/* Selector de zona — solo por debajo de 1280px */}
+      <div className="flex shrink-0 items-center gap-2 border-b border-border bg-surface px-3 py-2 xl:hidden">
+        <SegmentedControl
+          options={["Bandeja", "Conversación", "Panel"] as const}
+          value={pane}
+          onChange={setPane}
+        />
+        <span className="num ml-auto text-[11.5px] text-muted-foreground">{actual.id}</span>
+      </div>
+
       {/* Bandeja */}
-      <section className="flex w-[320px] shrink-0 flex-col border-r border-border bg-surface">
+      <section
+        className={cn(
+          "min-h-0 w-full shrink-0 flex-col border-r border-border bg-surface xl:flex xl:w-[320px]",
+          pane === "Bandeja" ? "flex flex-1" : "hidden",
+        )}
+      >
         <div className="border-b border-border px-3 py-2">
           <div className="flex items-center justify-between pb-2">
             <h1 className="text-[13px] font-semibold">Bandeja</h1>
@@ -118,7 +134,12 @@ function Atenciones() {
       </section>
 
       {/* Conversación */}
-      <section className="flex min-w-0 flex-1 flex-col bg-background">
+      <section
+        className={cn(
+          "min-h-0 min-w-0 flex-1 flex-col bg-background xl:flex",
+          pane === "Conversación" ? "flex" : "hidden",
+        )}
+      >
         <header className="flex items-center gap-3 border-b border-border bg-surface px-4 py-2">
           <div className="min-w-0">
             <div className="flex items-center gap-2">
@@ -195,7 +216,12 @@ function Atenciones() {
       </section>
 
       {/* Panel operativo */}
-      <aside className="flex w-[336px] shrink-0 flex-col border-l border-border bg-surface">
+      <aside
+        className={cn(
+          "min-h-0 w-full shrink-0 flex-col border-l border-border bg-surface xl:flex xl:w-[336px]",
+          pane === "Panel" ? "flex flex-1" : "hidden",
+        )}
+      >
         <div className="border-b border-border px-3 py-2">
           <h2 className="text-[12px] font-semibold uppercase tracking-wide">Panel operativo</h2>
         </div>

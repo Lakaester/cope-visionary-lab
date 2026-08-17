@@ -33,6 +33,10 @@ const tabs = [
 function ReportesLayout() {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
   const [rango, setRango] = useState<"7 días" | "30 días" | "Trimestre">("30 días");
+  const [pais, setPais] = useState("Todos");
+  const [canal, setCanal] = useState("Todos");
+  const [categoria, setCategoria] = useState("Todas");
+  const [asesor, setAsesor] = useState("Todos");
 
   return (
     <>
@@ -69,10 +73,10 @@ function ReportesLayout() {
 
       <FilterBar right={<span className="text-[11.5px] text-muted-foreground">Datos de muestra</span>}>
         <SegmentedControl options={["7 días", "30 días", "Trimestre"] as const} value={rango} onChange={setRango} />
-        <SelectFilter label="País" value="Todos" onChange={() => {}} options={["Todos", "Perú", "Chile", "Colombia", "México", "Ecuador"]} />
-        <SelectFilter label="Canal" value="Todos" onChange={() => {}} options={["Todos", "WhatsApp", "Correo", "Zendesk", "Teléfono"]} />
-        <SelectFilter label="Categoría" value="Todas" onChange={() => {}} options={["Todas", "Integraciones", "Facturación", "Carta digital", "Cuenta", "Hardware", "Quejas"]} />
-        <SelectFilter label="Asesor" value="Todos" onChange={() => {}} options={["Todos", "M. Quispe", "J. Ramírez", "L. Fernández", "C. Rojas"]} />
+        <SelectFilter label="País" value={pais} onChange={setPais} options={["Todos", "Perú", "Chile", "Colombia", "México", "Ecuador"]} />
+        <SelectFilter label="Canal" value={canal} onChange={setCanal} options={["Todos", "WhatsApp", "Correo", "Zendesk", "Teléfono"]} />
+        <SelectFilter label="Categoría" value={categoria} onChange={setCategoria} options={["Todas", "Integraciones", "Facturación", "Carta digital", "Cuenta", "Hardware", "Quejas"]} />
+        <SelectFilter label="Asesor" value={asesor} onChange={setAsesor} options={["Todos", "M. Quispe", "J. Ramírez", "L. Fernández", "C. Rojas"]} />
       </FilterBar>
 
       <ScrollContainer className="px-5 py-4">

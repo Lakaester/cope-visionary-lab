@@ -8,11 +8,11 @@ export const Route = createFileRoute("/reportes/")({ component: Resumen });
 
 type Cat = (typeof categoriasVol)[number];
 const cols: Column<Cat>[] = [
-  { key: "c", header: "Categoría", cell: (r) => <span className="font-medium">{r.categoria}</span> },
-  { key: "a", header: "Atenciones", align: "right", width: "110px", cell: (r) => r.atenciones },
-  { key: "s", header: "Participación", align: "right", width: "110px", cell: (r) => `${r.share}%` },
-  { key: "t", header: "TRM", align: "right", width: "90px", cell: (r) => `${r.trm} min` },
-  { key: "sla", header: "SLA", align: "right", width: "150px", cell: (r) => <MiniBar value={r.sla} tone={r.sla >= 90 ? "success" : r.sla >= 80 ? "warning" : "danger"} /> },
+  { key: "c", header: "Categoría", sortValue: (r) => r.categoria, cell: (r) => <span className="font-medium">{r.categoria}</span> },
+  { key: "a", header: "Atenciones", align: "right", width: "110px", sortValue: (r) => r.atenciones, cell: (r) => r.atenciones },
+  { key: "s", header: "Participación", align: "right", width: "110px", sortValue: (r) => r.share, cell: (r) => `${r.share}%` },
+  { key: "t", header: "TRM", align: "right", width: "90px", sortValue: (r) => r.trm, cell: (r) => `${r.trm} min` },
+  { key: "sla", header: "SLA", align: "right", width: "150px", sortValue: (r) => r.sla, cell: (r) => <MiniBar value={r.sla} tone={r.sla >= 90 ? "success" : r.sla >= 80 ? "warning" : "danger"} /> },
 ];
 
 function Resumen() {
