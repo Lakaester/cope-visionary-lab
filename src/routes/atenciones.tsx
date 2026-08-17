@@ -42,6 +42,7 @@ function Atenciones() {
   const [query, setQuery] = useState("");
   const [filtro, setFiltro] = useState<"Todos" | "Míos" | "Sin asignar" | "En riesgo">("Todos");
   const [selectedId, setSelectedId] = useState(tickets[0]!.id);
+  const [pane, setPane] = useState<"Bandeja" | "Conversación" | "Panel">("Conversación");
 
   const lista = useMemo(() => {
     const q = query.trim().toLowerCase();
@@ -57,9 +58,24 @@ function Atenciones() {
   const actual = tickets.find((t) => t.id === selectedId) ?? tickets[0]!;
 
   return (
-    <div className="flex min-h-0 flex-1">
+    <div className="flex min-h-0 flex-1 flex-col xl:flex-row">
+      {/* Selector de zona — solo por debajo de 1280px */}
+      <div className="flex shrink-0 items-center gap-2 border-b border-border bg-surface px-3 py-2 xl:hidden">
+        <SegmentedControl
+          options={["Bandeja", "Conversación", "Panel"] as const}
+          value={pane}
+          onChange={setPane}
+        />
+        <span className="num ml-auto text-[11.5px] text-muted-foreground">{actual.id}</span>
+      </div>
+
       {/* Bandeja */}
-      <section className="flex w-[320px] shrink-0 flex-col border-r border-border bg-surface">
+      <section
+        className={cn(
+          "min-h-0 w-full shrink-0 flex-col border-r border-border bg-surface xl:flex xl:w-[320px]",
+          pane === "Bandeja" ? "flex flex-1" : "hidden",
+        )}
+      >
         <div className="border-b border-border px-3 py-2">
           <div className="flex items-center justify-between pb-2">
             <h1 className="text-[13px] font-semibold">Bandeja</h1>
