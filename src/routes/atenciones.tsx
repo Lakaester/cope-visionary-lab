@@ -134,7 +134,12 @@ function Atenciones() {
       </section>
 
       {/* Conversación */}
-      <section className="flex min-w-0 flex-1 flex-col bg-background">
+      <section
+        className={cn(
+          "min-h-0 min-w-0 flex-1 flex-col bg-background xl:flex",
+          pane === "Conversación" ? "flex" : "hidden",
+        )}
+      >
         <header className="flex items-center gap-3 border-b border-border bg-surface px-4 py-2">
           <div className="min-w-0">
             <div className="flex items-center gap-2">
@@ -211,7 +216,12 @@ function Atenciones() {
       </section>
 
       {/* Panel operativo */}
-      <aside className="flex w-[336px] shrink-0 flex-col border-l border-border bg-surface">
+      <aside
+        className={cn(
+          "min-h-0 w-full shrink-0 flex-col border-l border-border bg-surface xl:flex xl:w-[336px]",
+          pane === "Panel" ? "flex flex-1" : "hidden",
+        )}
+      >
         <div className="border-b border-border px-3 py-2">
           <h2 className="text-[12px] font-semibold uppercase tracking-wide">Panel operativo</h2>
         </div>
