@@ -152,6 +152,10 @@
   --black-5: oklch(0.94 0 0);
 
   --primary: oklch(0.62 0.2 255);
+  --primary-85: oklch(0.66 0.18 255);
+  --primary-65: oklch(0.7 0.16 255);
+  --primary-45: oklch(0.76 0.13 255);
+  --primary-25: oklch(0.82 0.1 255);
   --primary-10: oklch(0.9 0.06 255);
   --primary-5: oklch(0.96 0.03 255);
   --primary-foreground: oklch(1 0 0);
@@ -165,21 +169,58 @@
   --destructive-foreground: oklch(1 0 0);
   --border: oklch(0.88 0 0);
   --input: oklch(0.88 0 0);
-  --ring: oklch(0.62 0.2 255);
+  --ring: transparent;
 
-  --success: oklch(0.58 0.14 145);
+  --light: oklch(0.97 0.01 250);
+  --light-10: oklch(0.98 0.008 250);
+  --light-5: oklch(0.99 0.005 250);
+  --black: oklch(0.25 0 0);
+  --white: oklch(1 0 0);
+
+  --success: oklch(0.7 0.16 145);
+  --success-85: oklch(0.74 0.14 145);
+  --success-65: oklch(0.78 0.12 145);
+  --success-45: oklch(0.84 0.09 145);
+  --success-25: oklch(0.88 0.07 145);
+  --success-10: oklch(0.93 0.04 145);
+  --success-5: oklch(0.97 0.02 145);
   --success-foreground: oklch(1 0 0);
-  --success-soft: oklch(0.97 0.02 145);
-  --warning: oklch(0.65 0.16 50);
+  --success-soft: var(--success-5);
+  --warning: oklch(0.72 0.18 50);
+  --warning-85: oklch(0.76 0.16 50);
+  --warning-65: oklch(0.8 0.14 50);
+  --warning-45: oklch(0.86 0.1 50);
+  --warning-25: oklch(0.9 0.08 50);
+  --warning-10: oklch(0.93 0.06 50);
+  --warning-5: oklch(0.96 0.04 50);
   --warning-foreground: oklch(1 0 0);
-  --warning-soft: oklch(0.96 0.04 50);
+  --warning-soft: var(--warning-5);
+  --yellow: oklch(0.78 0.18 80);
+  --yellow-10: oklch(0.96 0.06 80);
+  --yellow-5: oklch(0.98 0.04 80);
   --info: oklch(0.62 0.2 255);
   --info-foreground: oklch(1 0 0);
-  --info-soft: oklch(0.96 0.03 255);
+  --info-soft: var(--primary-5);
   --danger: oklch(0.63 0.22 25);
+  --danger-85: oklch(0.67 0.2 25);
+  --danger-65: oklch(0.72 0.18 25);
+  --danger-45: oklch(0.78 0.14 25);
+  --danger-25: oklch(0.84 0.1 25);
+  --danger-10: oklch(0.9 0.07 25);
+  --danger-5: oklch(0.96 0.04 25);
   --danger-foreground: oklch(1 0 0);
-  --danger-soft: oklch(0.96 0.04 25);
+  --danger-soft: var(--danger-5);
   --neutral-soft: oklch(0.94 0 0);
+
+  --aqua: oklch(0.75 0.16 170);
+  --aqua-10: oklch(0.95 0.05 170);
+  --aqua-5: oklch(0.98 0.03 170);
+  --magenta: oklch(0.65 0.25 350);
+  --magenta-10: oklch(0.92 0.08 350);
+  --magenta-5: oklch(0.96 0.05 350);
+  --purple: oklch(0.65 0.22 280);
+  --purple-10: oklch(0.92 0.07 280);
+  --purple-5: oklch(0.96 0.04 280);
 
   --ch-whatsapp: oklch(0.58 0.14 145);
   --ch-correo: oklch(0.65 0.16 50);
