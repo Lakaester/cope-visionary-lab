@@ -120,7 +120,6 @@ function Sidebar({ mobileOpen, onClose }: { mobileOpen: boolean; onClose: () => 
 
 function Header({ onOpenMenu }: { onOpenMenu: () => void }) {
   const { pathname } = useActiveNav();
-  const [logoOk, setLogoOk] = useState(false);
   const current = navItems.find((n) => (n.to === "/" ? pathname === "/" : pathname.startsWith(n.to)));
 
   return (
