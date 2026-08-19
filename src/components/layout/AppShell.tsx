@@ -120,7 +120,6 @@ function Sidebar({ mobileOpen, onClose }: { mobileOpen: boolean; onClose: () => 
 
 function Header({ onOpenMenu }: { onOpenMenu: () => void }) {
   const { pathname } = useActiveNav();
-  const [logoFailed, setLogoFailed] = useState(false);
   const current = navItems.find((n) => (n.to === "/" ? pathname === "/" : pathname.startsWith(n.to)));
 
   return (
@@ -135,18 +134,9 @@ function Header({ onOpenMenu }: { onOpenMenu: () => void }) {
       </button>
 
       <div className="flex h-full shrink-0 flex-col items-start justify-center gap-0.5 px-4">
-        {logoFailed ? (
-          <span className="text-[13px] font-semibold uppercase leading-none tracking-tight text-black-85">
-            Restaurant<span className="text-primary">.pe</span>
-          </span>
-        ) : (
-          <img
-            src="/logo-restaurantpe.svg"
-            alt="Restaurant.pe"
-            className="h-[14px] w-auto"
-            onError={() => setLogoFailed(true)}
-          />
-        )}
+        <span className="text-[13px] font-semibold uppercase leading-none tracking-tight text-black-85">
+          Restaurant<span className="text-primary">.pe</span>
+        </span>
         <span className="text-[9px] font-semibold uppercase leading-none tracking-widest text-primary">
           COPE
         </span>

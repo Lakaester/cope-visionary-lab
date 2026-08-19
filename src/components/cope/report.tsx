@@ -7,7 +7,7 @@ export function KpiRow({
   items: { label: string; value: string; unit?: string; delta?: string; deltaTone?: Tone; accent?: Tone; hint?: string }[];
 }) {
   return (
-    <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+    <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
       {items.map((k) => (
         <KpiCard
           key={k.label}
@@ -36,7 +36,7 @@ export function TablePanel({
   children: ReactNode;
 }) {
   return (
-    <section className="rounded-md border border-border bg-surface">
+    <section className="overflow-hidden rounded-lg border border-black-5 bg-white">
       <SectionHeader title={title} hint={hint} actions={actions} />
       {children}
     </section>

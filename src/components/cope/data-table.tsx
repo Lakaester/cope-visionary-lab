@@ -74,10 +74,10 @@ export function DataTable<T>({
   }
   return (
     <>
-    <div className="scroll-y" style={{ maxHeight }}>
-      <table className="w-full border-collapse text-[12.5px]">
-        <thead className="sticky top-0 z-10 bg-surface-2">
-          <tr className="border-b border-border">
+    <div className="scroll-y overflow-x-auto" style={{ maxHeight }}>
+      <table className="w-full border-collapse text-xs">
+        <thead className="sticky top-0 z-10 bg-light">
+          <tr className="border-b border-black-5">
             {columns.map((c) => {
               const active = sort?.key === c.key;
               return (
@@ -87,8 +87,8 @@ export function DataTable<T>({
                 style={{ width: c.width }}
                 aria-sort={active ? (sort!.dir === "asc" ? "ascending" : "descending") : undefined}
                 className={cn(
-                  "whitespace-nowrap px-3 py-2 text-[11px] font-semibold uppercase tracking-wide text-muted-foreground",
-                  active && "text-foreground",
+                  "whitespace-nowrap px-3 py-2 text-[10px] font-medium text-black-45",
+                  active && "text-black-85",
                   c.align === "right" ? "text-right" : "text-left",
                 )}
               >
@@ -97,7 +97,7 @@ export function DataTable<T>({
                     type="button"
                     onClick={() => toggleSort(c.key)}
                     className={cn(
-                      "inline-flex items-center gap-1 uppercase tracking-wide outline-none hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring/50",
+                      "inline-flex items-center gap-1 outline-none hover:text-black-85",
                       c.align === "right" && "flex-row-reverse",
                     )}
                   >
@@ -141,9 +141,9 @@ export function DataTable<T>({
                 tabIndex={onSelect ? 0 : undefined}
                 aria-selected={selected}
                 className={cn(
-                  "border-b border-border/70 transition-colors",
-                  onSelect && "cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring/50",
-                  selected ? "bg-info-soft" : "hover:bg-surface-2",
+                  "border-b border-black-5 bg-white text-black-85 transition-colors",
+                  onSelect && "cursor-pointer outline-none",
+                  selected ? "bg-primary-5" : "hover:bg-light",
                 )}
               >
                 {columns.map((c) => (
@@ -164,7 +164,7 @@ export function DataTable<T>({
       </table>
     </div>
     {pageSize && pages > 1 && (
-      <div className="flex items-center justify-between gap-2 border-t border-border px-3 py-2 text-[11.5px] text-muted-foreground">
+      <div className="flex items-center justify-between gap-2 border-t border-black-5 bg-white px-3 py-2 text-[10px] text-black-45">
         <span className="num">
           {current * pageSize + 1}–{Math.min((current + 1) * pageSize, sorted.length)} de {sorted.length}
         </span>
@@ -173,7 +173,7 @@ export function DataTable<T>({
             type="button"
             onClick={() => setPage(Math.max(0, current - 1))}
             disabled={current === 0}
-            className="rounded border border-border px-2 py-1 font-medium text-foreground disabled:opacity-40 enabled:hover:bg-muted"
+            className="rounded border border-black-10 px-2 py-1 font-medium text-black-85 disabled:opacity-40 enabled:hover:bg-light"
           >
             Anterior
           </button>
@@ -184,7 +184,7 @@ export function DataTable<T>({
             type="button"
             onClick={() => setPage(Math.min(pages - 1, current + 1))}
             disabled={current >= pages - 1}
-            className="rounded border border-border px-2 py-1 font-medium text-foreground disabled:opacity-40 enabled:hover:bg-muted"
+            className="rounded border border-black-10 px-2 py-1 font-medium text-black-85 disabled:opacity-40 enabled:hover:bg-light"
           >
             Siguiente
           </button>
@@ -204,10 +204,10 @@ export function MiniBar({ value, tone = "info" }: { value: number; tone?: "info"
   }[tone];
   return (
     <div className="flex items-center justify-end gap-2">
-      <div className="h-1.5 w-16 overflow-hidden rounded-full bg-neutral-soft">
+      <div className="h-1.5 w-16 overflow-hidden rounded-full bg-black-5">
         <div className={cn("h-full rounded-full", bg)} style={{ width: `${Math.min(value, 100)}%` }} />
       </div>
-      <span className="num w-9 text-right text-[12px]">{value}%</span>
+      <span className="num w-9 text-right text-xs">{value}%</span>
     </div>
   );
 }
