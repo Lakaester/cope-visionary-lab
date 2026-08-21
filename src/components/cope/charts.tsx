@@ -27,11 +27,11 @@ export const axisProps = {
 
 const tooltipStyle = {
   contentStyle: {
-    borderRadius: 6,
-    border: "1px solid var(--border)",
+    borderRadius: 4,
+    border: "1px solid var(--black-10)",
     background: "var(--surface)",
     fontSize: 12,
-    boxShadow: "0 2px 8px rgba(15,23,42,0.08)",
+    padding: "6px 10px",
   },
   labelStyle: { fontSize: 11, color: "var(--muted-foreground)" },
 } as const;
@@ -52,7 +52,7 @@ export function ChartCard({
   className?: string | undefined;
 }) {
   return (
-    <section className={cn("rounded-lg border border-border bg-surface", className)}>
+    <section className={cn("rounded-lg border border-black-5 bg-white", className)}>
       <SectionHeader title={title} hint={hint} actions={actions} />
       <div className="px-2 py-3" style={{ height }}>
         <ResponsiveContainer width="100%" height="100%">
