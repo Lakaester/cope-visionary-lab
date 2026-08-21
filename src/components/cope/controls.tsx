@@ -84,7 +84,7 @@ export function SegmentedControl<T extends string>({
   return (
     <div
       role="tablist"
-      className={cn("inline-flex h-10 items-center rounded border border-black-10 bg-white p-0.5", className)}
+      className={cn("inline-flex h-8 items-center rounded border border-black-10 bg-white p-0.5", className)}
     >
       {options.map((opt) => (
         <button
@@ -94,7 +94,7 @@ export function SegmentedControl<T extends string>({
           type="button"
           onClick={() => onChange(opt)}
           className={cn(
-            "h-9 rounded-[3px] px-3 text-xs font-medium transition-colors",
+            "h-7 rounded-[3px] px-3 text-xs font-medium transition-colors",
             value === opt
               ? "bg-primary text-white"
               : "text-black-45 hover:bg-light hover:text-black-85",
@@ -119,12 +119,12 @@ export function SelectFilter({
   onChange: (v: string) => void;
 }) {
   return (
-    <label className="inline-flex h-10 items-center gap-1.5 rounded border border-black-10 bg-white pl-3 pr-2 text-xs focus-within:border-primary">
+    <label className="inline-flex h-8 items-center gap-1.5 rounded border border-black-10 bg-white pl-2.5 pr-1.5 text-xs focus-within:border-primary">
       <span className="text-black-45">{label}</span>
       <select
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="h-8 border-0 bg-transparent pr-1 text-xs font-medium text-black-85 outline-none"
+        className="h-7 border-0 bg-transparent pr-1 text-xs font-medium text-black-85 outline-none"
       >
         {options.map((o) => (
           <option key={o} value={o}>
@@ -148,13 +148,13 @@ export function FilterBar({
   return (
     <div
       className={cn(
-        "flex flex-wrap items-end gap-3 px-5 pb-3 md:px-6",
+        "sticky top-0 z-20 flex flex-wrap items-center gap-2 border-y border-black-5 bg-light px-5 py-2 md:px-6",
         className,
       )}
     >
-      <SlidersHorizontal className="mb-3 size-4 text-black-25" aria-hidden />
+      <SlidersHorizontal className="size-4 shrink-0 text-black-25" aria-hidden />
       {children}
-      {right && <div className="ml-auto flex items-center gap-2 pb-2">{right}</div>}
+      {right && <div className="ml-auto flex items-center gap-2">{right}</div>}
     </div>
   );
 }
